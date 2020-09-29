@@ -34,9 +34,7 @@ function Human(name, weight, height, diet, where, when, fact) {
 
 // check form length for getting form values\
 var element_form = document.getElementById("dino-compare");
-console.log(element_form);
 var form_submit_value = document.getElementById("dino-compare").elements.length;
-console.log("form_submit_value", form_submit_value);
 
 
 // var kvpairs = [];
@@ -75,20 +73,18 @@ document.getElementById('btn').addEventListener('click', function(e) {
     let weight = parseFloat(document.getElementById('weight').value);
     let diet = document.getElementById('diet').value;
     human_value = new Human(name, height, weight, diet);
-    console.log(human_value)
     function init() {
-        console.log("iife", human_value);
         var refresh_list = bird_list.shuffle();
         for (i=1; i <= 9; i ++) {
             if (i === 5) {
                 grid_loc.innerHTML += `<div class='grid-item'><img src='images/human.png'> <span>${human_value.name}</span></div>`;
-                grid_loc.innerHTML += `<div class='grid-item'><img src=images/${refresh_list[i-1].species}.png></div>`;
+                grid_loc.innerHTML += `<div class='grid-item'><img src=images/${refresh_list[i-1].species}.png><span>${refresh_list[i-1].fact}</span></div>`;
 
             } else if (i !== 5) {
                 if (refresh_list[i-1].species === 'pigeon') {
-                    grid_loc.innerHTML += "<div class='grid-item'><img src='images/pigeon.png'></div>";
+                    grid_loc.innerHTML += `<div class='grid-item'><img src='images/pigeon.png'><span>${refresh_list[i-1].fact}</span></div>`;
                 } else {
-                    grid_loc.innerHTML += `<div class='grid-item'><img src=images/${refresh_list[i-1].species}.png></div>`;
+                    grid_loc.innerHTML += `<div class='grid-item'><img src=images/${refresh_list[i-1].species}.png><span>${refresh_list[i-1].fact}</span></div>`;
                 }
             }
         }
